@@ -1,0 +1,18 @@
+export default function Reports () {}
+describe('Reports ', () => {
+   
+    beforeEach(() => {
+        cy.viewport(1280, 720)
+        cy.visit('/')
+      })
+
+it('Search domains report ', () => {
+    cy.wait(5000);
+    cy.get('[data-test-id="support"]'). click();
+    cy.contains('Reports'). scrollIntoView(). click();
+    cy.get('[data-test-id="search-domains"]'). click(). type (cypress.env('domains'));
+    cy.wait(3000);
+    cy.get('[data-test-id="search"]'). click();
+})
+
+})

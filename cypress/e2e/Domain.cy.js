@@ -18,13 +18,11 @@ it('Search valid domain ', () => {
 })
 
 it('Search invalid domain', () => {
-    cy.wait(5000);
     cy.get('[data-test-id="enter-a-domain"]').should('be.visible');
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('gdfshbtrs').type('{enter}');
 })
 
 it('Add main note to domain ', () => {
-    cy.wait(5000);
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('flaviafernandes.dmt.example'). type('{enter}');
     cy.get ('button[data-test-id="main-note"]'). click();
     cy.get('[data-test-id="enter-the-new-main-note"]').should('be.visible');
@@ -34,7 +32,6 @@ it('Add main note to domain ', () => {
 })
 
 it('Add new note to domain ', () => {
-    cy.wait(5000);
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('flaviafernandes.dmt.example').type('{enter}');
     cy.get('[data-test-id="add-note"]'). click();
     cy.get('[data-test-id="type-your-note-here"]'). click(). type (`Testing add new note +${new Date().getTime()}`); 
@@ -43,7 +40,6 @@ it('Add new note to domain ', () => {
 })
 
 it('Required field : add note',()=>{
-    cy.wait(5000);
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('flaviafernandes.dmt.example').type('{enter}');
     cy.get('[data-test-id="add-note"]'). click();
     cy.get('button[data-test-id="save"]').eq(1). click();
@@ -51,15 +47,12 @@ it('Required field : add note',()=>{
 })
 
 it('Lock domain',()=>{
-    cy.wait(5000);
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('flaviafernandes.dmt.example').type('{enter}');
     cy.get('button[data-test-id="lock"]'). click();
     cy.get('button[data-test-id="confirm"]'). click();
-    cy.wait(3000);
 })
 
 it('Unlock domain',()=>{
-    cy.wait(5000);
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('flaviafernandes.dmt.example').type('{enter}');
     cy.get('[data-test-id="unlock"]').should('be.visible');
     cy.get('button[data-test-id="unlock"]'). click();
@@ -67,7 +60,6 @@ it('Unlock domain',()=>{
 })
 
 it('Rescan domain',()=>{
-    cy.wait(5000);
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('flaviafernandes.dmt.example').type('{enter}');
     cy.get('[data-test-id="rescan"]').should('be.visible');
     cy.get('button[data-test-id="rescan"]'). click();
@@ -76,7 +68,6 @@ it('Rescan domain',()=>{
 })
 
 it('Add categories to domain',()=>{
-    cy.wait(5000);
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('flaviafernandes6.dmt.example').type('{enter}');
     cy.get('[data-test-id="main-note"]').should('be.visible');
     cy.contains('Select a category...'). scrollIntoView(). click(). type ('Books & Literature');
@@ -91,7 +82,6 @@ it('Add categories to domain',()=>{
 })
 
 it('Remove categories to domain',()=>{
-    cy.wait(5000);
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('flaviafernandes6.dmt.example').type('{enter}');
     cy.get('[data-test-id="main-note"]').should('be.visible');
     cy.get('button[data-test-id="delete"]').eq(1). click();
@@ -103,7 +93,6 @@ it('Remove categories to domain',()=>{
 })
 
 it('Add categories to domain by phising, malware, content server / Discard changes',()=>{
-    cy.wait(5000);
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type(`flavia${Math.round(Math.random() * 100)}.dmt.example`).type('{enter}');
     cy.get('[data-test-id="main-note"]').should('be.visible');
     cy.contains('Quick Add'). scrollIntoView();
@@ -116,23 +105,17 @@ it('Add categories to domain by phising, malware, content server / Discard chang
 })
 
 it('Add / remove application to domain',()=>{
-    cy.wait(5000);
     cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type(`flavia${Math.round(Math.random() * 1000)}.dmt.example`).type('{enter}');
     cy.get('[data-test-id="main-note"]').should('be.visible');
     cy.contains('Select...'). scrollIntoView(). click(). type('Juan');
-    cy.wait(3000);
-    cy.contains('Juan App'). click();
-    cy.wait(3000);
+    cy.contains('Flávia App'). click();
     cy.get('button[data-test-id="delete"]').eq(0). click();
     cy.get('button[data-test-id="confirm"]'). click();
-    cy.wait(2000);
     cy.contains('Application removed!').should('be.visible');
 })
 
 it ('Export csv',()=>{
-    cy.wait(5000);
-    cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('flaviafernandes1.dmt.example').type('{enter}');
-    cy.wait (3000);
+    cy.get('input[data-test-id="enter-a-domain"]').eq(0). click(). type('flaviamorais1.dmt.example').type('{enter}');
     cy.contains('History'). scrollIntoView();
     cy.get('button[data-test-id="export-csv"]'). click();
 })

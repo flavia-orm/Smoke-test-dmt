@@ -19,7 +19,7 @@ it('Required fields ', () => {
 
 it('Edit User ', () => {
     cy.contains('Users'). scrollIntoView(). click();
-    cy.get('[data-test-id="search-users"]'). click(). type('Flávia Fernandes Cypress');
+    cy.get('[data-test-id="search-users"]'). click(). type('Flávia Morais Cypress');
     cy.get('[data-test-id="edit"]'). click();
     cy.get('[data-test-id="e-mail"]'). click(). clear(). type(`flavia.ormf${Math.round(Math.random() * 100)}@gmail.com`)
     cy.get('[data-test-id="save"]'). click();
@@ -28,7 +28,7 @@ it('Edit User ', () => {
 
 it('Re-generate api key/secret ', () => {
     cy.contains('Users'). scrollIntoView(). click();
-    cy.get('[data-test-id="search-users"]'). click(). type('Flávia Fernandes Cypress');
+    cy.get('[data-test-id="search-users"]'). click(). type('Flávia Morais Cypress');
     cy.get('[data-test-id="edit"]'). click();
     cy.get('[data-test-id="generate-key"]'). click();
     cy.contains("API Key/Secret generated successfully!").should('be.visible'); 
